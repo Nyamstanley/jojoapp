@@ -32,7 +32,7 @@ let cart = [];
 
 app.get("/", (req, res) => {
 
-  res.send("🛍️ Welcome to Stanley's E-Commerce Store API!");
+  res.send("🛍️ Welcome to Stanley's E-Commerce Store where you can get all the best product");
 
 });
  
