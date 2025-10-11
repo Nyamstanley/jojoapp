@@ -32,6 +32,6 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: stanley-webapp    # repace with App Service name
+          app-name: ddaap    # repace with App Service name
           package: .
 
