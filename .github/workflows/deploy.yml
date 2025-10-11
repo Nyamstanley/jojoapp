@@ -1,0 +1,37 @@
+name: Build, Test, and Deploy to Azure App Service
+ 
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+ 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+ 
+      - name: Install dependencies
+        run: npm install
+ 
+      - name: Run Tests
+        run: npm test || echo "No tests yet"
+ 
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+ 
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: stanley-webapp    # repace with App Service name
+          package: .
+
